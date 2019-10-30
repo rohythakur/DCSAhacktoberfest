@@ -1,0 +1,71 @@
+//
+//  main.c
+//  selectionsort
+//
+//  Created by sanchu on 30/04/19.
+//  Copyright © 2019 rohyt. All rights reserved.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int arr[40], i , n;
+    printf("enter the no. of elements for sorting");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("before sorting\n");
+    display(arr,n);
+    selection(arr,n);
+    printf("after sorting");
+    display(arr,n);
+
+}
+
+int selection(int arr[],int n){
+    
+    int temp;
+    int i,j;
+    int loc;
+    for(i=0;i<n-1;i++)
+    {
+        loc=i;
+   
+        for(j=i+1;j<n;j++)
+        {if(arr[j]<arr[loc])
+                loc=j;
+        }
+    //interchanging the values of loc and j
+        temp=arr[i];
+        arr[i]=arr[loc];
+        arr[loc]=temp;
+    }
+    return 0;
+}
+
+int display(int arr[], int n){
+    
+    FILE *out_outfile = fopen("selction.txt","a+");
+    if (out_outfile == NULL)
+    {
+        printf("Error! Could not open file\n");
+        exit(-1); // must include stdlib.h
+    }
+    
+    
+    
+    
+    
+    for(int i=0;i<=n;i++)
+    {
+        fprintf(out_outfile,"%d",arr[i]);
+        printf("%d",arr[i]);
+    }
+    fclose(out_outfile);
+    return 0;
+    
+    return 0;
+}
