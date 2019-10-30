@@ -1,0 +1,40 @@
+using System;
+namespace mcaa
+{
+    delegate void del(String s);
+    public class delegates
+    {
+        static void Helllo(String s)
+        {
+            System.Console.WriteLine("Hello {0}!", s);
+        }
+
+        static void Goodbye(String s)
+        {
+            System.Console.WriteLine("Goodby {0}!", s);
+        }
+
+    
+    static void Main(string[] args)
+    {
+            delegates ab = new delegates();
+            del a, b, c, d;
+            a = Helllo;
+            b =Goodbye;
+            c = a + b;
+            d = c - a;
+
+            System.Console.WriteLine("invoking delegate a:");
+            a("A");
+            System.Console.WriteLine("invoking delegate b:");
+            b("B");
+            System.Console.WriteLine("invoking delegate c:");
+            c("C");
+            System.Console.WriteLine("invoking delegate d:");
+            d("D");
+
+
+    }
+
+}
+}
