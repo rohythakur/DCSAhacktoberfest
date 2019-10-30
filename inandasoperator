@@ -1,0 +1,37 @@
+using System;
+namespace mcaa
+{
+    // public class isnas
+    // {
+    public class a
+    { }
+    public class b
+    { }
+    public class c
+    {
+        static void Main(string[] args)
+        {
+            a ob1 = new a();
+            b ob2 = new b();
+            c ob3 = new c();
+            object ob4 = new object();
+            ob4 = "hello";
+            Console.WriteLine(ob1 is b);//
+            string st = ob4 as string;
+            if (st != null)
+                Console.WriteLine(ob4);
+            else
+                Console.WriteLine("wrong data type");
+
+
+
+            //isnas ab = new isnas();
+            //if (ab is isnas) {
+            //  isnas s = ab;
+
+        }
+    }
+}
+
+    //}
+//}
