@@ -1,0 +1,250 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using mcaa;
+namespace mcaa
+{
+    public interface I_rectangle { void printrectangle(); }
+    public interface I_circle { void printcircle(); }
+    public interface I_square { void printsquare(); }
+    public interface I_triangle { void printtriangle(); }
+
+
+    public abstract class Ashapes
+    {
+        public abstract void area();
+        public abstract void parameter();
+    }
+    class rectangle : Ashapes, I_rectangle
+    {
+        double length, breadth;
+        public void printrectangle()                            //interface
+        {
+            Console.WriteLine("\n\nMeasurement of RECTANGLE");
+        }
+        public rectangle(double length, double breadth)                             //constructor used
+        {
+            this.length = length;
+            this.breadth = breadth;
+        }
+        public override void area()
+        {
+            double area;
+            area = length * breadth;
+            Console.WriteLine("\nArea of rectangle = {0}", area);
+        }
+        public override void parameter()
+        {
+            double parameter;
+            parameter = 2 * (length + breadth);
+            Console.WriteLine("Parameter of rectangle = {0}", parameter);
+        }
+    }
+    class circle : Ashapes, I_circle
+    {
+        double radius;
+        public void printcircle()                                           //function in intreface
+        {
+            Console.WriteLine("\n\nMeasurement of CIRCLE");
+        }
+        public circle(double radius)                                        //constructor 
+        {
+            this.radius = radius;
+        }
+        public override void area()
+        {
+            double area;
+            area = 3.1428 * radius * radius;
+            Console.WriteLine("\nArea of circle = {0}", area);
+        }
+        public override void parameter()
+        {
+            double parameter;
+            parameter = (2 * (3.1428) * radius);
+            Console.WriteLine("Parameter of circle = {0}", parameter);
+        }
+    }
+    class square : Ashapes, I_square
+    {
+        double side;
+        public void printsquare()
+        {
+            Console.WriteLine("\n\nMeasurement of SQUARE");
+        }
+        public square(double side)                                          //constructor used
+        {
+            this.side = side;
+        }
+        public override void area()
+        {
+            double area;
+            area = side * side;
+            Console.WriteLine("\nArea of square = {0}", area);
+        }
+        public override void parameter()
+        {
+            double parameter;
+            parameter = 4 * side;
+            Console.WriteLine("Parameter of square = {0}", parameter);
+        }
+    }
+    class Triangle : Shape, I_triangle
+    {
+        private double baseline;
+        private double height;
+        private double hypotenuse;
+
+        public void beforetriangle()                                  //method from interface 2
+        {
+            Console.WriteLine("\nThe Calculations of Triangle are: ");
+        }
+
+        public Triangle(double baseline, double height)     //for area and volume
+        {
+            this.baseline = baseline;
+            this.height = height;
+        }
+        public Triangle(double baseline, double height, double hypotenuse) //for perimter of triangle
+        {
+            this.baseline = baseline;
+            this.height = height;
+            this.hypotenuse = hypotenuse;
+        }
+        //-----------------------------------------------Methods inside Triangle------------------------------------
+
+        public override void area()
+        {
+            Console.WriteLine("Area of Triangle is: {0}", baseline * height / 2.0);
+        }
+        public override void perimeter()
+        {
+            Console.WriteLine("Perimeter of Triangle is: {0}", baseline + height + hypotenuse);
+        }
+        public override void volume()
+        {
+            Console.WriteLine("Volume of Triangle is: {0}", 0.5 * baseline * height);
+        }
+    }
+
+
+}
+public delegate void rectangledelegate();                  //delegate declare for rectangle 
+public delegate void circledelegate();                      //delegate declare for circle
+public delegate void squaredelegate();                       //delegate declare for square
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int choice;
+        bool a = true;
+        while (a)
+        {
+            Console.WriteLine("Select your shape \n\n");
+            Console.WriteLine("1: Rectangle");
+            Console.WriteLine("2: Square");
+            Console.WriteLine("3: Circle");
+            Console.WriteLine("4: TRIANGLE")
+            Console.WriteLine("4: Exit");
+            Console.WriteLine("Enter your choice");
+            choice = int.Parse(Console.ReadLine());
+            Console.Write("Please Select the number from above options: ");
+                Console.WriteLine("\n 1. Area \n 2. Perimeter \n ");
+            int ch = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    double len, bre;
+                    Console.Clear();
+                    Console.Write("Enter the length : ");
+                    len = double.Parse(Console.ReadLine());                         //input length
+                    Console.Write("Enter the breadth : ");
+                    bre = double.Parse(Console.ReadLine());                         //input breadth
+                    rectangle rec = new rectangle(len, bre);
+                    
+                    if (ch == 1)
+                    {
+                        rectangledelegate rec1 = new rectangledelegate(rec.area);
+                        rec.printrectangle();
+                        rec1();
+                    }
+                    if (ch == 2)
+                    {
+                        rectangledelegate rec2 = new rectangledelegate(rec.parameter);
+                        rec.printrectangle();
+                        rec2();
+                    }
+                    
+               
+                    break;
+                case 2:
+                    float side;
+                    Console.Clear();
+                    Console.Write("Enter the side of square : ");
+                    side = float.Parse(Console.ReadLine());                        
+                    square sq = new square(side);                                  
+                    sq.printsquare();
+                    
+                    if (ch == 1)
+                    {
+                        squaredelegate sq1 = new squaredelegate(sq.area);
+                        sq1();
+                    }
+                    if (ch == 2)
+                    {
+                        squaredelegate sq2 = new squaredelegate(sq.parameter);
+                        sq2();
+                    }
+                    //squaredelegate sq3;
+                   // sq3 = sq1 + sq2;
+                   // sq3();
+                    break;
+                case 3:
+                    double radius;
+                    Console.Clear();
+                    Console.Write("Enter the radius of circle : ");
+                    radius = double.Parse(Console.ReadLine());                      //input radius
+                    circle cir = new circle(radius);                                     //circle object created
+                    cir.printcircle();
+                    if (ch == 1)
+                    {
+                        circledelegate cir1 = new circledelegate(cir.area);
+                        cir1();
+                    }
+                    if (ch == 2)
+                    {
+                        circledelegate cir2 = new circledelegate(cir.parameter);
+                        cir2();
+                    }
+                    //circledelegate cir3;
+                    //cir3 = cir1 + cir2;
+                   // cir3();
+                    break;
+                case 4:
+                    return;
+                default:
+                    Console.WriteLine("\n\nEnter the correct choice");
+                    break;
+            }
+
+        }
+    }
+
+    public static void ap(double area, double parameter)                         //delegate function for rectangle double paramtere
+    {
+        Console.WriteLine("\n\nArea = {0}", area);
+        Console.WriteLine("Parameter = {0}", parameter);
+    }
+    public static void ap(int area, int parameter)                              //delegate function for square int paramtere
+    {
+        Console.WriteLine("\n\nArea of sqaure = {0}", area);
+        Console.WriteLine("Parameter of square = {0}", parameter);
+    }
+}
+
+
+
+
+
+
