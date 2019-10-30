@@ -1,0 +1,50 @@
+//
+//  elementshavingsum.c
+//  CHECKING
+//
+//  Created by shiva on 02/10/19.
+//  Copyright © 2019 rohyt. All rights reserved.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int checksum(int arr[], int n,int x)
+{
+    int count=0;
+    for(int i=0;i<=n;i++)
+    {
+        for(int j=i+1;j<=n;j++)
+        {
+            if(x==arr[i]+arr[j])
+            {
+                count++;
+                printf("the element with sum( %d,%d)\n",arr[i],arr[j]);
+                
+            }
+            
+        }
+    }
+    printf("\n no. of elements with sum is %d \n",count);
+    
+    
+    
+    
+    return 0;
+    
+    
+    
+}
+
+int main()
+{
+    int arr[6]={1,2,3,4,5,6};
+    int n= sizeof(arr)/sizeof(arr[0]);
+    int x;
+    printf("enter the sum you wanted to find  from array \t");
+    scanf("%d",&x);
+    system("clear");
+    
+    checksum(arr,n,x);
+    return 0;
+}
