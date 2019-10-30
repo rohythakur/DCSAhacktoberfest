@@ -1,0 +1,24 @@
+using System;
+namespace mcaa
+{
+    public class bitwiseoperator
+    {
+        static void Main(string[] args)
+        {
+            int a = 5;
+            int b = 7;
+            Console.WriteLine("output of a<<1");
+            Console.WriteLine("output of a&b");
+            Console.WriteLine("output of a|b");
+            Console.WriteLine("output of b>>1");
+            Console.WriteLine("output of a^b");
+
+            Console.WriteLine(a << 1);
+            Console.WriteLine(a & b);
+            Console.WriteLine(a | b);
+            Console.WriteLine(b >> 1);
+            Console.WriteLine(a^b);
+        
+        }
+    }
+}
