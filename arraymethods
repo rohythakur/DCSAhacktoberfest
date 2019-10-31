@@ -1,0 +1,31 @@
+using System;
+namespace mcaa
+{
+    public class arraymethods
+    {
+        static void Main(string[] args)
+        {
+            int[] arr1 = new int[5];
+            int[] arr = new int[5] { 1, 9, 8, 5, 4 };
+            //finding length of a array
+            Console.WriteLine("the length of array is:" + arr.Length);
+            //sorting a array
+            Array.Sort(arr);
+            foreach(int i in arr)
+            {
+                Console.WriteLine(i +" ");
+            }
+            Console.WriteLine("the reversse of the array"); 
+            Array.Reverse(arr);
+            foreach (int i in arr)
+            {
+                Console.WriteLine(i + " ");
+            }
+            Console.WriteLine("index of 9 is " + Array.IndexOf(arr, 9));
+            Array.Copy(arr, arr1, arr.Length);
+
+
+        }
+
+    }
+}
