@@ -1,0 +1,17 @@
+using System;
+namespace mcaa
+{
+    public class boxingnunboxing
+    {
+        static void Main(string[] args)
+        {
+            int i = 100;
+            object o = i;
+            int j = (int)o;
+            Console.WriteLine("Data value is = {0} ", j);
+            Console.WriteLine("Object value is ={0}", o);
+            Console.ReadKey();
+        }
+
+        }
+}
